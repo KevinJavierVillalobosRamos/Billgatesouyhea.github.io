@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Formulario de contacto</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>Formulario de Contacto</h1>
+    <h2>Envíanos tu información</h2>
+  </header>
+
+  <main>
+    <section class="formulario">
+      <form id="contactoForm">
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" name="nombre" required>
+
+        <label for="correo">Correo electrónico:</label>
+        <input type="email" id="correo" name="correo" required>
+
+        <label for="mensaje">Mensaje o comentario:</label>
+        <textarea id="mensaje" name="mensaje" rows="5" required></textarea>
+
+        <button type="submit">Enviar</button>
+      </form>
+
+      <div id="resultado" class="resultado" style="display:none;">
+        <h3>Información enviada correctamente ✅</h3>
+        <p><strong>Nombre:</strong> <span id="resNombre"></span></p>
+        <p><strong>Correo:</strong> <span id="resCorreo"></span></p>
+        <p><strong>Mensaje:</strong> <span id="resMensaje"></span></p>
+      </div>
+    </section>
+
+    <nav class="enlaces">
+      <a href="index.html">⬅ Volver al inicio</a>
+      <a href="galeria.html">⬅ Ir a galería</a>
+    </nav>
+  </main>
+
+  <footer>
+    <p>© 2025 Jesús Francisco Mendoza Sosa y Kevin Javier Villalobos Ramos | Proyecto escolar</p>
+  </footer>
+
+  <script>
+    const form = document.getElementById('contactoForm');
+    const resultado = document.getElementById('resultado');
+    const resNombre = document.getElementById('resNombre');
+    const resCorreo = document.getElementById('resCorreo');
+    const resMensaje = document.getElementById('resMensaje');
+
+    form.addEventListener('submit', function(e) {
+      e.preventDefault(); // Evita que recargue la página
+      resNombre.textContent = form.nombre.value;
+      resCorreo.textContent = form.correo.value;
+      resMensaje.textContent = form.mensaje.value;
+      resultado.style.display = 'block';
+      form.reset();
+    });
+  </script>
+</body>
+</html>
+
