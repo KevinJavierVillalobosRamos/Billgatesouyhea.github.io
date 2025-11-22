@@ -3,16 +3,20 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Galería de trabajos</title>
+  <title>Galería y Formulario</title>
   <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
+
   <header>
     <h1>Galería de Trabajos</h1>
     <h2>Durante los 4 semestres de la capacitación</h2>
   </header>
 
-  <main>
+  <div>
+
+    <!-- ===== GALERÍA ===== -->
     <section class="galeria">
       <img src="imagenes/img1.png" alt="Trabajo 1">
       <img src="imagenes/img2.png" alt="Trabajo 2">
@@ -26,17 +30,57 @@
       <img src="imagenes/img10.png" alt="Trabajo 10">
     </section>
 
-    <nav class="enlaces">
-      <a href="index.html">Inicio</a>
-      <a href="formulario.html">Formulario</a>
-    </nav>
-  </main>
+    <!-- Divisor -->
+    <hr style="width: 80%; border: 1px solid var(--color-borde); margin: 40px 0;">
+
+    <!-- ===== FORMULARIO ===== -->
+    <section class="formulario">
+      <h2 style="text-align:center; margin-bottom: 10px;">Formulario de contacto</h2>
+
+      <form id="contactoForm">
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" name="nombre" required>
+
+        <label for="correo">Correo electrónico:</label>
+        <input type="email" id="correo" name="correo" required>
+
+        <label for="mensaje">Mensaje o comentario:</label>
+        <textarea id="mensaje" name="mensaje" rows="5" required></textarea>
+
+        <button type="submit">Enviar</button>
+      </form>
+
+      <div id="resultado" class="resultado" style="display:none;">
+        <h3>Información enviada correctamente ✅</h3>
+        <p><strong>Nombre:</strong> <span id="resNombre"></span></p>
+        <p><strong>Correo:</strong> <span id="resCorreo"></span></p>
+        <p><strong>Mensaje:</strong> <span id="resMensaje"></span></p>
+      </div>
+    </section>
+
+  </div>
 
   <footer>
-<p>Jesús Francisco Mendoza Sosa y Kevin Javier Villalobos Ramos | Grupo 651 | Turno Vespertino</p>
+    <p>Jesús Francisco Mendoza Sosa y Kevin Javier Villalobos Ramos | Grupo 651 | Turno Vespertino</p>
   </footer>
+
+  <!-- ===== SCRIPT ===== -->
+  <script>
+    const form = document.getElementById('contactoForm');
+    const resultado = document.getElementById('resultado');
+    const resNombre = document.getElementById('resNombre');
+    const resCorreo = document.getElementById('resCorreo');
+    const resMensaje = document.getElementById('resMensaje');
+
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      resNombre.textContent = form.nombre.value;
+      resCorreo.textContent = form.correo.value;
+      resMensaje.textContent = form.mensaje.value;
+      resultado.style.display = 'block';
+      form.reset();
+    });
+  </script>
+
 </body>
 </html>
-
-
-
